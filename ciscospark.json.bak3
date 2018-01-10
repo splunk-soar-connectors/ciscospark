@@ -1,0 +1,480 @@
+{
+    "appid": "f9185f7c-b669-4c05-8f57-9e87a6bda5d6",
+    "name": "Cisco Spark",
+    "description": "Integrate into Cisco Spark",
+    "type": "information",
+    "product_vendor": "Cisco",
+    "logo": "ciscospark.png",
+    "product_name": "Cisco Spark",
+    "product_version_regex": ".*",
+    "publisher": "Phantom",
+    "license": "Copyright Phantom 2018",
+    "app_version": "1.0.0",
+    "utctime_updated": "2018-01-05T14:16:21.211957Z",
+    "package_name": "phantom_ciscospark",
+    "main_module": "ciscospark_connector.pyc",
+    "min_phantom_version": "3.0.264",
+    "app_wizard_version": "1.0.0",
+    "configuration": {
+        "base_url": {
+            "description": "The Base URL to connect to",
+            "data_type": "string",
+            "required": true,
+            "value_list": [],
+            "default": "",
+            "order": 0
+        },
+        "authorization_key": {
+            "description": "API Key",
+            "data_type": "string",
+            "required": true,
+            "value_list": [],
+            "default": "",
+            "order": 1
+        }
+    },
+    "actions": [
+        {
+            "action": "test connectivity",
+            "identifier": "test_connectivity",
+            "description": "Validate the asset configuration for connectivity using supplied configuration",
+            "verbose": "",
+            "type": "test",
+            "read_only": true,
+            "parameters": {},
+            "output": [],
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "list rooms",
+            "identifier": "list_rooms",
+            "description": "List Spark rooms",
+            "verbose": "",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {},
+            "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 0,
+                    "example_values": [
+                        "success"
+                    ]
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        ""
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.items.*.title",
+                    "data_type": "string",
+                    "example_values": [
+                        "Test Alert Space"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.items.*.created",
+                    "data_type": "string",
+                    "example_values": [
+                        "2018-01-05T02:43:33.032Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.items.*.isLocked",
+                    "data_type": "boolean",
+                    "example_values": [
+                        true,
+                        false
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.items.*.lastActivity",
+                    "data_type": "string",
+                    "example_values": [
+                        "2018-01-08T21:26:38.851Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.items.*.creatorId",
+                    "data_type": "string",
+                    "example_values": [
+                        "Y2lzY29zcGFyazovL3VzL1BFT1BMRS9iMmMwZjIwMS03NGQyLTRkYTEtYWM0Yi1mNzc3ZmEwMDg2YmM"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.items.*.type",
+                    "data_type": "string",
+                    "example_values": [
+                        "group"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.items.*.id",
+                    "data_type": "string",
+                    "example_values": [
+                        "Y2lzY29zcGFyazovL3VzL1JPT00vMzg2NzFhODAtZjFjMi0xMWU3LTg1OWUtNDMzYWY3YWQ5YmJi"
+                    ]
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "get user",
+            "identifier": "get_user",
+            "description": "Get user_ID from e-mail address",
+            "verbose": "",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "email_address": {
+                    "description": "user spark e-mail address",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": false,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.email_address",
+                    "data_type": "string",
+                    "contains": [
+                        "email"
+                    ],
+                    "column_name": "email_address",
+                    "column_order": 0,
+                    "example_values": [
+                        "monielynn@theharlanfamily.org"
+                    ]
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1,
+                    "example_values": [
+                        "success"
+                    ]
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        ""
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.items.*.status",
+                    "data_type": "string",
+                    "example_values": [
+                        "inactive"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.items.*.displayName",
+                    "data_type": "string",
+                    "example_values": [
+                        "Monika Harlan"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.items.*.created",
+                    "data_type": "string",
+                    "example_values": [
+                        "2018-01-04T20:46:30.734Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.items.*.type",
+                    "data_type": "string",
+                    "example_values": [
+                        "person"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.items.*.id",
+                    "data_type": "string",
+                    "example_values": [
+                        "Y2lzY29zcGFyazovL3VzL1BFT1BMRS9hMzllMGQ4Mi01ZWE0LTQ3OTktOWM3Zi00M2E0MTI4MjUzYjU"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.items.*.lastActivity",
+                    "data_type": "string",
+                    "example_values": [
+                        "2018-01-05T21:04:53.424Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.items.*.orgId",
+                    "data_type": "string",
+                    "example_values": [
+                        "Y2lzY29zcGFyazovL3VzL09SR0FOSVpBVElPTi9jb25zdW1lcg"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.items.*.nickName",
+                    "data_type": "string",
+                    "example_values": [
+                        "Monika"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.items.*.emails",
+                    "data_type": "string",
+                    "example_values": [
+                        "monielynn@theharlanfamily.org"
+                    ],
+                    "contains": [
+                        "email"
+                    ]
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "message user",
+            "identifier": "message_user",
+            "description": "Direct Message user",
+            "verbose": "",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "person_id": {
+                    "description": "toPersonID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": false,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                },
+                "message": {
+                    "description": "message",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": false,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 1
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.person_id",
+                    "data_type": "string",
+                    "column_name": "person_id",
+                    "column_order": 0,
+                    "example_values": [
+                        "Y2lzY29zcGFyazovL3VzL1BFT1BMRS9hMzllMGQ4Mi01ZWE0LTQ3OTktOWM3Zi00M2E0MTI4MjUzYjU"
+                    ]
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1,
+                    "example_values": [
+                        "success"
+                    ]
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        ""
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.roomType",
+                    "data_type": "string",
+                    "example_values": [
+                        "direct"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.toPersonId",
+                    "data_type": "string",
+                    "example_values": [
+                        "Y2lzY29zcGFyazovL3VzL1BFT1BMRS9hMzllMGQ4Mi01ZWE0LTQ3OTktOWM3Zi00M2E0MTI4MjUzYjU"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.personId",
+                    "data_type": "string",
+                    "example_values": [
+                        "Y2lzY29zcGFyazovL3VzL1BFT1BMRS9iMmMwZjIwMS03NGQyLTRkYTEtYWM0Yi1mNzc3ZmEwMDg2YmM"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.text",
+                    "data_type": "string",
+                    "example_values": [
+                        "Compile Test"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.created",
+                    "data_type": "string",
+                    "example_values": [
+                        "2018-01-08T21:27:31.755Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.personEmail",
+                    "data_type": "string",
+                    "example_values": [
+                        "richard.harlan@phantom.us"
+                    ],
+                    "contains": [
+                        "email"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.roomId",
+                    "data_type": "string",
+                    "example_values": [
+                        "Y2lzY29zcGFyazovL3VzL1JPT00vODliODk1ZWYtYjk2YS0zMTk0LTlhNDQtNDAxZTk4MzBiNGY5"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.id",
+                    "data_type": "string",
+                    "example_values": [
+                        "Y2lzY29zcGFyazovL3VzL01FU1NBR0UvYmM0MGQ3YjAtZjRiYS0xMWU3LWI5NGEtMzMxMmE4MmI4ZmVl"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.message",
+                    "data_type": "string",
+                    "example_values": [
+                        "Compile Test"
+                    ]
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        },
+        {
+            "action": "message room",
+            "identifier": "message_room",
+            "description": "Send message to Spark Room",
+            "verbose": "",
+            "type": "generic",
+            "read_only": false,
+            "parameters": {
+                "room_id": {
+                    "description": "RoomID",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": false,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 0
+                },
+                "message": {
+                    "description": "message",
+                    "data_type": "string",
+                    "required": true,
+                    "primary": false,
+                    "contains": [],
+                    "value_list": [],
+                    "default": "",
+                    "order": 1
+                }
+            },
+            "output": [
+                {
+                    "data_path": "action_result.parameter.room_id",
+                    "data_type": "string",
+                    "contains": [],
+                    "column_name": "room_id",
+                    "column_order": 0
+                },
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 1
+                },
+                {
+                    "data_path": "action_result.message",
+                    "data_type": "string"
+                },
+                {
+                    "data_path": "summary.total_objects",
+                    "data_type": "numeric"
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric"
+                }
+            ],
+            "render": {
+                "type": "table"
+            },
+            "versions": "EQ(*)"
+        }
+    ]
+}
