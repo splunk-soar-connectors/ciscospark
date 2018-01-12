@@ -133,7 +133,8 @@ class CiscoSparkConnector(BaseConnector):
 
         # Create a URL to connect to
         url = self._base_url + endpoint
-
+        authToken = "Bearer " + self._api_key
+        headers = {'Content-Type': 'application/json', 'Authorization': authToken}
         try:
             r = request_func(
                             url,
@@ -148,86 +149,69 @@ class CiscoSparkConnector(BaseConnector):
 
     def _handle_test_connectivity(self, param):
 
-        # Add an action result object to self (BaseConnector) to represent the action for this param
         action_result = self.add_action_result(ActionResult(dict(param)))
 
         self.save_progress("Validating API Key")
-        headers = {'Content-Type': 'application/json', 'Authorization': self._api_key}
-        ret_val, response = self._make_rest_call('/v1/rooms', action_result, params=None, headers=headers)
+        ret_val, response = self._make_rest_call('/v1/rooms', action_result, params=None, headers=None)
 
         if (phantom.is_fail(ret_val)):
-            # the call to the 3rd party device or service failed, action result should contain all the error details
-            # so just return from here
-            # self.save_progress("Test Connectivity Failed. Error: {0}".format(response))
-            self.save_progress("Test Connectivity Failed. Error: {0}".format(action_result.get_message()))
+            self.save_progress("Test Connectivity Failed.")
             return action_result.get_status()
 
-        # Return success
         self.save_progress("Test Connectivity Passed")
         return action_result.set_status(phantom.APP_SUCCESS)
 
     def _handle_list_rooms(self, param):
 
-        # Implement the handler here
-        # use self.save_progress(...) to send progress messages back to the platform
         self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
 
-        # Add an action result object to self (BaseConnector) to represent the action for this param
         action_result = self.add_action_result(ActionResult(dict(param)))
-        headers = {'Content-Type': 'application/json', 'Authorization': self._api_key}
-        ret_val, response = self._make_rest_call('/v1/rooms', action_result, params=None, headers=headers)
+        ret_val, response = self._make_rest_call('/v1/rooms', action_result, params=None, headers=None)
         action_result.add_data(response)
+
+        if phantom.is_fail(ret_val):
+            return action_result.get_status()
 
         return action_result.set_status(phantom.APP_SUCCESS)
 
     def _handle_get_user(self, param):
 
-        # Implement the handler here
-        # use self.save_progress(...) to send progress messages back to the platform
         self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
 
-        # Add an action result object to self (BaseConnector) to represent the action for this param
         action_result = self.add_action_result(ActionResult(dict(param)))
         uri_endpoint = "/v1/people?email={0}".format(param['email_address'])
-        headers = {'Content-Type': 'application/json', 'Authorization': self._api_key}
-        ret_val, response = self._make_rest_call(uri_endpoint, action_result, params=None, headers=headers)
+        ret_val, response = self._make_rest_call(uri_endpoint, action_result, params=None, headers=None)
 
         action_result.add_data(response)
 
+        if phantom.is_fail(ret_val):
+            return action_result.get_status()
+
         return action_result.set_status(phantom.APP_SUCCESS)
 
-    def _handle_message_user(self, param):
+    def _handle_send_message(self, param):
 
-        # Implement the handler here
-        # use self.save_progress(...) to send progress messages back to the platform
         self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
 
-        # Add an action result object to self (BaseConnector) to represent the action for this param
         action_result = self.add_action_result(ActionResult(dict(param)))
-        uri_endpoint = "/v1/messages"
-        headers = {'Content-Type': 'application/json', 'Authorization': self._api_key}
-        user_id = param['person_id']
-        message = param['message']
-        data = {'toPersonId': user_id, 'text': message}
-        ret_val, response = self._make_rest_call(uri_endpoint, action_result, params=None, headers=headers, data=data, method="post")
+        type = param['destination_type']
+        if type == "user":
+            uri_endpoint = "/v1/messages"
+            user_id = param['endpoint_id']
+            message = param['message']
+            data = {'toPersonId': user_id, 'text': message}
+        else:
+            uri_endpoint = "/v1/messages"
+            user_id = param['endpoint_id']
+            message = param['message']
+            data = {'roomId': user_id, 'text': message}
+
+        ret_val, response = self._make_rest_call(uri_endpoint, action_result, params=None, headers=None, data=data, method="post")
 
         action_result.add_data(response)
-        return action_result.set_status(phantom.APP_SUCCESS)
 
-    def _handle_message_room(self, param):
-
-        # Implement the handler here
-        # use self.save_progress(...) to send progress messages back to the platform
-        self.save_progress("In action handler for: {0}".format(self.get_action_identifier()))
-
-        # Add an action result object to self (BaseConnector) to represent the action for this param
-        action_result = self.add_action_result(ActionResult(dict(param)))
-        uri_endpoint = "/v1/messages"
-        headers = {'Content-Type': 'application/json', 'Authorization': self._api_key}
-        user_id = param['room_id']
-        message = param['message']
-        data = {'roomId': user_id, 'text': message}
-        ret_val, response = self._make_rest_call(uri_endpoint, action_result, params=None, headers=headers, data=data, method="post")
+        if phantom.is_fail(ret_val):
+            return action_result.get_status()
 
         return action_result.set_status(phantom.APP_SUCCESS)
 
@@ -235,7 +219,6 @@ class CiscoSparkConnector(BaseConnector):
 
         ret_val = phantom.APP_SUCCESS
 
-        # Get the action that we are supposed to execute for this App Run
         action_id = self.get_action_identifier()
 
         self.debug_print("action_id", self.get_action_identifier())
@@ -249,11 +232,8 @@ class CiscoSparkConnector(BaseConnector):
         elif action_id == 'get_user':
             ret_val = self._handle_get_user(param)
 
-        elif action_id == 'message_user':
-            ret_val = self._handle_message_user(param)
-
-        elif action_id == 'message_room':
-            ret_val = self._handle_message_room(param)
+        elif action_id == 'send_message':
+            ret_val = self._handle_send_message(param)
 
         return ret_val
 
