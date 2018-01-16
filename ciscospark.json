@@ -21,6 +21,7 @@
             "data_type": "string",
             "required": true,
             "value_list": [],
+            "default": "https://api.ciscospark.com",
             "order": 0
         },
         "authorization_key": {
@@ -82,7 +83,7 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.items.*.title",
+                    "data_path": "action_result.data.*.title",
                     "data_type": "string",
                     "example_values": [
                         "Test Alert Space"
@@ -91,14 +92,14 @@
                     "column_order": 0
                 },
                 {
-                    "data_path": "action_result.data.*.items.*.created",
+                    "data_path": "action_result.data.*.created",
                     "data_type": "string",
                     "example_values": [
                         "2018-01-05T02:43:33.032Z"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.items.*.isLocked",
+                    "data_path": "action_result.data.*.isLocked",
                     "data_type": "boolean",
                     "example_values": [
                         true,
@@ -106,29 +107,35 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.items.*.lastActivity",
+                    "data_path": "action_result.data.*.lastActivity",
                     "data_type": "string",
                     "example_values": [
                         "2018-01-08T21:26:38.851Z"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.items.*.creatorId",
+                    "data_path": "action_result.data.*.creatorId",
                     "data_type": "string",
+                    "contains": [
+                      "creater id"
+                    ],
                     "example_values": [
                         "Y2lzY29zcGFyazovL3VzL1BFT1BMRS9iMmMwZjIwMS03NGQyLTRkYTEtYWM0Yi1mNzc3ZmEwMDg2YmM"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.items.*.type",
+                    "data_path": "action_result.data.*.type",
                     "data_type": "string",
                     "example_values": [
                         "group"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.items.*.id",
+                    "data_path": "action_result.data.*.id",
                     "data_type": "string",
+                    "contains": [
+                      "spark room id"
+                    ],
                     "example_values": [
                         "Y2lzY29zcGFyazovL3VzL1JPT00vMzg2NzFhODAtZjFjMi0xMWU3LTg1OWUtNDMzYWY3YWQ5YmJi"
                     ],
@@ -172,13 +179,13 @@
                         "monielynn@theharlanfamily.org"
                     ],
                     "column_name": "Email Address",
-                    "column_order": 0
+                    "column_order": 1
                 },
                 {
                     "data_path": "action_result.status",
                     "data_type": "string",
                     "column_name": "status",
-                    "column_order": 1,
+                    "column_order": 0,
                     "example_values": [
                         "success"
                     ]
@@ -205,67 +212,70 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.items.*.status",
+                    "data_path": "action_result.data.*.status",
                     "data_type": "string",
                     "example_values": [
                         "inactive"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.items.*.displayName",
+                    "data_path": "action_result.data.*.*.displayName",
                     "data_type": "string",
                     "example_values": [
                         "Monika Harlan"
                     ],
                     "column_name": "User Name",
-                    "column_order": 1
+                    "column_order": 2
                 },
                 {
-                    "data_path": "action_result.data.*.items.*.created",
+                    "data_path": "action_result.data.*.created",
                     "data_type": "string",
                     "example_values": [
                         "2018-01-04T20:46:30.734Z"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.items.*.type",
+                    "data_path": "action_result.data.*.type",
                     "data_type": "string",
                     "example_values": [
                         "person"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.items.*.id",
+                    "data_path": "action_result.data.*.*.id",
                     "data_type": "string",
+                    "contains": [
+                      "spark user id"
+                    ],
                     "example_values": [
                         "Y2lzY29zcGFyazovL3VzL1BFT1BMRS9hMzllMGQ4Mi01ZWE0LTQ3OTktOWM3Zi00M2E0MTI4MjUzYjU"
                     ],
                     "column_name": "ID",
-                    "column_order": 2
+                    "column_order": 3
                 },
                 {
-                    "data_path": "action_result.data.*.items.*.lastActivity",
+                    "data_path": "action_result.data.*.lastActivity",
                     "data_type": "string",
                     "example_values": [
                         "2018-01-05T21:04:53.424Z"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.items.*.orgId",
+                    "data_path": "action_result.data.*.orgId",
                     "data_type": "string",
                     "example_values": [
                         "Y2lzY29zcGFyazovL3VzL09SR0FOSVpBVElPTi9jb25zdW1lcg"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.items.*.nickName",
+                    "data_path": "action_result.data.*.nickName",
                     "data_type": "string",
                     "example_values": [
                         "Monika"
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.items.*.emails",
+                    "data_path": "action_result.data.*.emails",
                     "data_type": "string",
                     "example_values": [
                         "monielynn@theharlanfamily.org"
@@ -306,7 +316,10 @@
                       "room",
                       "user"
                     ],
-                    "contains": [],
+                    "contains": [
+                      "spark user id",
+                      "spark room id"
+                    ],
                     "order": 1
                 },
                 "message": {
@@ -321,9 +334,9 @@
             },
             "output": [
                 {
-                    "data_path": "action_result.parameter.person_id",
+                    "data_path": "action_result.parameter.endpoint_id",
                     "data_type": "string",
-                    "column_name": "person_id",
+                    "column_name": "endpoint_id",
                     "column_order": 0,
                     "example_values": [
                         "Y2lzY29zcGFyazovL3VzL1BFT1BMRS9hMzllMGQ4Mi01ZWE0LTQ3OTktOWM3Zi00M2E0MTI4MjUzYjU"

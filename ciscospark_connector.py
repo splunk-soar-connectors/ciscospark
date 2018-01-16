@@ -167,8 +167,17 @@ class CiscoSparkConnector(BaseConnector):
 
         action_result = self.add_action_result(ActionResult(dict(param)))
         ret_val, response = self._make_rest_call('/v1/rooms', action_result, params=None, headers=None)
-        action_result.add_data(response)
+        # action_result.add_data(response)
 
+        summary = action_result.update_summary({'total_rooms': 0})
+        resp_value = response.get('items', [])
+        if (type(resp_value) != list):
+            resp_value = [resp_value]
+
+        for curr_item in resp_value:
+            action_result.add_data(curr_item)
+
+        summary['total_rooms'] = action_result.get_data_size()
         if phantom.is_fail(ret_val):
             return action_result.get_status()
 
@@ -182,7 +191,19 @@ class CiscoSparkConnector(BaseConnector):
         uri_endpoint = "/v1/people?email={0}".format(param['email_address'])
         ret_val, response = self._make_rest_call(uri_endpoint, action_result, params=None, headers=None)
 
-        action_result.add_data(response)
+        # action_result.add_data(response)
+
+        summary = action_result.update_summary({'found_user': False})
+        resp_value = response.get('items', [])
+        if (type(resp_value) == list):
+            resp_value = [resp_value]
+
+        try:
+            action_result.add_data(resp_value[0])
+        except:
+            pass
+
+        summary['found_user'] = True if action_result.get_data_size() > 0 else False
 
         if phantom.is_fail(ret_val):
             return action_result.get_status()
