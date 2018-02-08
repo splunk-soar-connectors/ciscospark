@@ -1,7 +1,7 @@
 {
     "appid": "f9185f7c-b669-4c05-8f57-9e87a6bda5d6",
     "name": "Cisco Spark",
-    "description": "Integrate into Cisco Spark",
+    "description": "Integrate with Cisco Spark to implement investigative actions",
     "type": "information",
     "product_vendor": "Cisco",
     "logo": "logo_ciscospark.svg",
