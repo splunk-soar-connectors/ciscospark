@@ -14,7 +14,7 @@
     "utctime_updated": "2018-02-08T20:44:08.000000Z",
     "package_name": "phantom_ciscospark",
     "main_module": "ciscospark_connector.pyc",
-    "min_phantom_version": "3.0.251",
+    "min_phantom_version": "3.0.284",
     "app_wizard_version": "1.0.0",
     "configuration": {
         "base_url": {
