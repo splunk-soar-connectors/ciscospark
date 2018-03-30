@@ -234,7 +234,7 @@ class CiscoSparkConnector(BaseConnector):
         if phantom.is_fail(ret_val):
             return action_result.get_status()
 
-        return action_result.set_status(phantom.APP_SUCCESS)
+        return action_result.set_status(phantom.APP_SUCCESS, "Message Sent")
 
     def handle_action(self, param):
 
