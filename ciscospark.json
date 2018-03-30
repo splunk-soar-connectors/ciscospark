@@ -63,42 +63,33 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.message",
-                    "data_type": "string",
-                    "example_values": [
-                        "",
-                        "Total rooms: 4"
-                    ]
-                },
-                {
-                    "data_path": "summary.total_objects",
-                    "data_type": "numeric",
-                    "example_values": [
-                        1
-                    ]
-                },
-                {
-                    "data_path": "summary.total_objects_successful",
-                    "data_type": "numeric",
-                    "example_values": [
-                        1
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.title",
-                    "data_type": "string",
-                    "example_values": [
-                        "Test Alert Space"
-                    ],
-                    "column_name": "Room Name",
-                    "column_order": 0
-                },
-                {
                     "data_path": "action_result.data.*.created",
                     "data_type": "string",
                     "example_values": [
                         "2018-01-05T02:43:33.032Z"
                     ]
+                },
+                {
+                    "data_path": "action_result.data.*.creatorId",
+                    "data_type": "string",
+                    "contains": [
+                        "creater id"
+                    ],
+                    "example_values": [
+                        "Y2lzY29zcGFyazovL3VzL1BFT1BMRS9iMmMwZjIwMS03NGQyLTRkYTEtYWM0Yi1mNzc3ZmEwMDg2YmM"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.id",
+                    "data_type": "string",
+                    "contains": [
+                        "spark room id"
+                    ],
+                    "example_values": [
+                        "Y2lzY29zcGFyazovL3VzL1JPT00vMzg2NzFhODAtZjFjMi0xMWU3LTg1OWUtNDMzYWY3YWQ5YmJi"
+                    ],
+                    "column_name": "ID",
+                    "column_order": 1
                 },
                 {
                     "data_path": "action_result.data.*.isLocked",
@@ -117,14 +108,13 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.creatorId",
+                    "data_path": "action_result.data.*.title",
                     "data_type": "string",
-                    "contains": [
-                        "creator id"
-                    ],
                     "example_values": [
-                        "Y2lzY29zcGFyazovL3VzL1BFT1BMRS9iMmMwZjIwMS03NGQyLTRkYTEtYWM0Yi1mNzc3ZmEwMDg2YmM"
-                    ]
+                        "Test Alert Space"
+                    ],
+                    "column_name": "Room Name",
+                    "column_order": 0
                 },
                 {
                     "data_path": "action_result.data.*.type",
@@ -134,22 +124,28 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.data.*.id",
-                    "data_type": "string",
-                    "contains": [
-                        "spark room id"
-                    ],
-                    "example_values": [
-                        "Y2lzY29zcGFyazovL3VzL1JPT00vMzg2NzFhODAtZjFjMi0xMWU3LTg1OWUtNDMzYWY3YWQ5YmJi"
-                    ],
-                    "column_name": "ID",
-                    "column_order": 1
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
                 },
                 {
-                    "data_path": "action_result.summary.total_rooms",
+                    "data_path": "action_result.message",
+                    "data_type": "string",
+                    "example_values": [
+                        ""
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects",
                     "data_type": "numeric",
                     "example_values": [
-                        4
+                        1
+                    ]
+                },
+                {
+                    "data_path": "summary.total_objects_successful",
+                    "data_type": "numeric",
+                    "example_values": [
+                        1
                     ]
                 }
             ],
@@ -171,12 +167,22 @@
                     "data_type": "string",
                     "required": true,
                     "primary": false,
-                    "contains": [],
-                    "value_list": [],
+                    "contains": [
+                        "email"
+                    ],
                     "order": 0
                 }
             },
             "output": [
+                {
+                    "data_path": "action_result.status",
+                    "data_type": "string",
+                    "column_name": "status",
+                    "column_order": 0,
+                    "example_values": [
+                        "success"
+                    ]
+                },
                 {
                     "data_path": "action_result.parameter.email_address",
                     "data_type": "string",
@@ -190,13 +196,81 @@
                     ]
                 },
                 {
-                    "data_path": "action_result.status",
+                    "data_path": "action_result.data.*.*.displayName",
                     "data_type": "string",
-                    "column_name": "status",
-                    "column_order": 0,
                     "example_values": [
-                        "success"
+                        "Monika Harlan"
+                    ],
+                    "column_name": "User Name",
+                    "column_order": 2
+                },
+                {
+                    "data_path": "action_result.data.*.*.id",
+                    "data_type": "string",
+                    "contains": [
+                        "spark user id"
+                    ],
+                    "example_values": [
+                        "Y2lzY29zcGFyazovL3VzL1BFT1BMRS9hMzllMGQ4Mi01ZWE0LTQ3OTktOWM3Zi00M2E0MTI4MjUzYjU"
+                    ],
+                    "column_name": "ID",
+                    "column_order": 3
+                },
+                {
+                    "data_path": "action_result.data.*.created",
+                    "data_type": "string",
+                    "example_values": [
+                        "2018-01-04T20:46:30.734Z"
                     ]
+                },
+                {
+                    "data_path": "action_result.data.*.emails",
+                    "data_type": "string",
+                    "example_values": [
+                        "monielynn@theharlanfamily.org"
+                    ],
+                    "contains": [
+                        "email"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.lastActivity",
+                    "data_type": "string",
+                    "example_values": [
+                        "2018-01-05T21:04:53.424Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.nickName",
+                    "data_type": "string",
+                    "example_values": [
+                        "Monika"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.orgId",
+                    "data_type": "string",
+                    "example_values": [
+                        "Y2lzY29zcGFyazovL3VzL09SR0FOSVpBVElPTi9jb25zdW1lcg"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.status",
+                    "data_type": "string",
+                    "example_values": [
+                        "inactive"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.type",
+                    "data_type": "string",
+                    "example_values": [
+                        "person"
+                    ]
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
                 },
                 {
                     "data_path": "action_result.message",
@@ -217,79 +291,6 @@
                     "data_type": "numeric",
                     "example_values": [
                         1
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.status",
-                    "data_type": "string",
-                    "example_values": [
-                        "inactive"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.*.displayName",
-                    "data_type": "string",
-                    "example_values": [
-                        "Monika Harlan"
-                    ],
-                    "column_name": "User Name",
-                    "column_order": 2
-                },
-                {
-                    "data_path": "action_result.data.*.created",
-                    "data_type": "string",
-                    "example_values": [
-                        "2018-01-04T20:46:30.734Z"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.type",
-                    "data_type": "string",
-                    "example_values": [
-                        "person"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.*.id",
-                    "data_type": "string",
-                    "contains": [
-                        "spark user id"
-                    ],
-                    "example_values": [
-                        "Y2lzY29zcGFyazovL3VzL1BFT1BMRS9hMzllMGQ4Mi01ZWE0LTQ3OTktOWM3Zi00M2E0MTI4MjUzYjU"
-                    ],
-                    "column_name": "ID",
-                    "column_order": 3
-                },
-                {
-                    "data_path": "action_result.data.*.lastActivity",
-                    "data_type": "string",
-                    "example_values": [
-                        "2018-01-05T21:04:53.424Z"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.orgId",
-                    "data_type": "string",
-                    "example_values": [
-                        "Y2lzY29zcGFyazovL3VzL09SR0FOSVpBVElPTi9jb25zdW1lcg"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.nickName",
-                    "data_type": "string",
-                    "example_values": [
-                        "Monika"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.emails",
-                    "data_type": "string",
-                    "example_values": [
-                        "monielynn@theharlanfamily.org"
-                    ],
-                    "contains": [
-                        "email"
                     ]
                 }
             ],
@@ -307,26 +308,24 @@
             "read_only": false,
             "parameters": {
                 "endpoint_id": {
-                    "description": "endpointID",
+                    "description": "User or Room ID",
                     "data_type": "string",
                     "required": true,
-                    "primary": false,
-                    "contains": [],
-                    "value_list": [],
+                    "primary": true,
+                    "contains": [
+                        "spark user id",
+                        "spark room id"
+                    ],
                     "order": 0
                 },
                 "destination_type": {
-                    "description": "destination_type",
+                    "description": "Destination Type",
                     "data_type": "string",
                     "required": true,
                     "primary": false,
                     "value_list": [
                         "room",
                         "user"
-                    ],
-                    "contains": [
-                        "spark user id",
-                        "spark room id"
                     ],
                     "order": 1
                 },
@@ -335,21 +334,10 @@
                     "data_type": "string",
                     "required": true,
                     "primary": false,
-                    "contains": [],
-                    "value_list": [],
                     "order": 2
                 }
             },
             "output": [
-                {
-                    "data_path": "action_result.parameter.endpoint_id",
-                    "data_type": "string",
-                    "column_name": "endpoint_id",
-                    "column_order": 0,
-                    "example_values": [
-                        "Y2lzY29zcGFyazovL3VzL1BFT1BMRS9hMzllMGQ4Mi01ZWE0LTQ3OTktOWM3Zi00M2E0MTI4MjUzYjU"
-                    ]
-                },
                 {
                     "data_path": "action_result.status",
                     "data_type": "string",
@@ -360,10 +348,104 @@
                     ]
                 },
                 {
+                    "data_path": "action_result.parameter.destination_type",
+                    "data_type": "string",
+                    "example_values": [
+                        "room"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.endpoint_id",
+                    "data_type": "string",
+                    "column_name": "endpoint_id",
+                    "column_order": 0,
+                    "example_values": [
+                        "Y2lzY29zcGFyazovL3VzL1BFT1BMRS9hMzllMGQ4Mi01ZWE0LTQ3OTktOWM3Zi00M2E0MTI4MjUzYjU",
+                        "Y2lzY29zcGFyazovL3VzL1JPT00vMzg2NzFhODAtZjFjMi0xMWU3LTg1OWUtNDMzYWY3YWQ5YmJi"
+                    ]
+                },
+                {
+                    "data_path": "action_result.parameter.message",
+                    "data_type": "string",
+                    "example_values": [
+                        "Compile Test",
+                        "hello room"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.created",
+                    "data_type": "string",
+                    "example_values": [
+                        "2018-01-08T21:27:31.755Z",
+                        "2018-03-30T18:36:01.210Z"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.id",
+                    "data_type": "string",
+                    "example_values": [
+                        "Y2lzY29zcGFyazovL3VzL01FU1NBR0UvYmM0MGQ3YjAtZjRiYS0xMWU3LWI5NGEtMzMxMmE4MmI4ZmVl",
+                        "Y2lzY29zcGFyazovL3VzL01FU1NBR0UvMzIxMjA5YTAtMzQ0OS0xMWU4LWJjNmUtMWJkNzlhODNjMTY3"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.personEmail",
+                    "data_type": "string",
+                    "example_values": [
+                        "herman@contoso.com"
+                    ],
+                    "contains": [
+                        "email"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.personId",
+                    "data_type": "string",
+                    "example_values": [
+                        "Y2lzY29zcGFyazovL3VzL1BFT1BMRS9iMmMwZjIwMS03NGQyLTRkYTEtYWM0Yi1mNzc3ZmEwMDg2YmM"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.roomId",
+                    "data_type": "string",
+                    "example_values": [
+                        "Y2lzY29zcGFyazovL3VzL1JPT00vODliODk1ZWYtYjk2YS0zMTk0LTlhNDQtNDAxZTk4MzBiNGY5",
+                        "Y2lzY29zcGFyazovL3VzL1JPT00vMzg2NzFhODAtZjFjMi0xMWU3LTg1OWUtNDMzYWY3YWQ5YmJi"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.roomType",
+                    "data_type": "string",
+                    "example_values": [
+                        "direct",
+                        "group"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.text",
+                    "data_type": "string",
+                    "example_values": [
+                        "Compile Test",
+                        "hello room"
+                    ]
+                },
+                {
+                    "data_path": "action_result.data.*.toPersonId",
+                    "data_type": "string",
+                    "example_values": [
+                        "Y2lzY29zcGFyazovL3VzL1BFT1BMRS9hMzllMGQ4Mi01ZWE0LTQ3OTktOWM3Zi00M2E0MTI4MjUzYjU"
+                    ]
+                },
+                {
+                    "data_path": "action_result.summary",
+                    "data_type": "string"
+                },
+                {
                     "data_path": "action_result.message",
                     "data_type": "string",
                     "example_values": [
-                        ""
+                        "",
+                        "Message Sent"
                     ]
                 },
                 {
@@ -378,83 +460,6 @@
                     "data_type": "numeric",
                     "example_values": [
                         1
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.roomType",
-                    "data_type": "string",
-                    "example_values": [
-                        "direct"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.toPersonId",
-                    "data_type": "string",
-                    "example_values": [
-                        "Y2lzY29zcGFyazovL3VzL1BFT1BMRS9hMzllMGQ4Mi01ZWE0LTQ3OTktOWM3Zi00M2E0MTI4MjUzYjU"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.personId",
-                    "data_type": "string",
-                    "example_values": [
-                        "Y2lzY29zcGFyazovL3VzL1BFT1BMRS9iMmMwZjIwMS03NGQyLTRkYTEtYWM0Yi1mNzc3ZmEwMDg2YmM"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.text",
-                    "data_type": "string",
-                    "example_values": [
-                        "Compile Test",
-                        "Messaging User with ID from last query"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.created",
-                    "data_type": "string",
-                    "example_values": [
-                        "2018-01-08T21:27:31.755Z",
-                        "2018-01-19T14:47:59.952Z"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.personEmail",
-                    "data_type": "string",
-                    "example_values": [
-                        "richard.harlan@phantom.us"
-                    ],
-                    "contains": [
-                        "email"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.roomId",
-                    "data_type": "string",
-                    "example_values": [
-                        "Y2lzY29zcGFyazovL3VzL1JPT00vODliODk1ZWYtYjk2YS0zMTk0LTlhNDQtNDAxZTk4MzBiNGY5"
-                    ]
-                },
-                {
-                    "data_path": "action_result.data.*.id",
-                    "data_type": "string",
-                    "example_values": [
-                        "Y2lzY29zcGFyazovL3VzL01FU1NBR0UvYmM0MGQ3YjAtZjRiYS0xMWU3LWI5NGEtMzMxMmE4MmI4ZmVl",
-                        "Y2lzY29zcGFyazovL3VzL01FU1NBR0UvYmU3ZDNkMDAtZmQyNy0xMWU3LWI5OTQtNjdjYjY4ZWMwNzJl"
-                    ]
-                },
-                {
-                    "data_path": "action_result.parameter.message",
-                    "data_type": "string",
-                    "example_values": [
-                        "Compile Test",
-                        "Messaging User with ID from last query"
-                    ]
-                },
-                {
-                    "data_path": "action_result.parameter.destination_type",
-                    "data_type": "string",
-                    "example_values": [
-                        "user"
                     ]
                 }
             ],
