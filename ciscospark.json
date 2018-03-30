@@ -1,7 +1,7 @@
 {
     "appid": "f9185f7c-b669-4c05-8f57-9e87a6bda5d6",
     "name": "Cisco Spark",
-    "description": "Integrate into Cisco Spark",
+    "description": "Integrate with Cisco Spark to implement investigative actions",
     "type": "information",
     "product_vendor": "Cisco",
     "logo": "logo_ciscospark.svg",
@@ -10,11 +10,11 @@
     "product_version_regex": ".*",
     "publisher": "Phantom",
     "license": "Copyright (c) Phantom Cyber Corporation, 2018",
-    "app_version": "1.0.0",
-    "utctime_updated": "2018-01-05T14:16:21.211957Z",
+    "app_version": "1.0.3",
+    "utctime_updated": "2018-03-26T21:30:10.000000Z",
     "package_name": "phantom_ciscospark",
     "main_module": "ciscospark_connector.pyc",
-    "min_phantom_version": "3.0.251",
+    "min_phantom_version": "3.0.284",
     "app_wizard_version": "1.0.0",
     "configuration": {
         "base_url": {
@@ -103,7 +103,8 @@
                     "data_path": "action_result.data.*.lastActivity",
                     "data_type": "string",
                     "example_values": [
-                        "2018-01-08T21:26:38.851Z"
+                        "2018-01-08T21:26:38.851Z",
+                        "2018-01-16T18:37:12.037Z"
                     ]
                 },
                 {
