@@ -29,7 +29,6 @@
             "description": "API Key",
             "data_type": "password",
             "required": true,
-            "value_list": [],
             "order": 1
         }
     },
