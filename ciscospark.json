@@ -25,11 +25,18 @@
             "default": "https://api.ciscospark.com",
             "order": 0
         },
+        "verify_cert": {
+            "description": "Verify Server Certificate",
+            "data_type": "boolean",
+            "required": false,
+            "default": false,
+            "order": 1
+        },
         "authorization_key": {
             "description": "API Key",
             "data_type": "password",
             "required": true,
-            "order": 1
+            "order": 2
         }
     },
     "actions": [
