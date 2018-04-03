@@ -264,7 +264,7 @@ class CiscoSparkConnector(BaseConnector):
         # that needs to be accessed across actions
         self._state = self.load_state()
         config = self.get_config()
-        self._base_url = config['base_url']
+        self._base_url = 'https://api.ciscospark.com'
         self._api_key = config['authorization_key']
 
         return phantom.APP_SUCCESS
