@@ -10,8 +10,8 @@ Minimum Product Version: 3.0.284
 
 Integrate with Cisco Spark to implement investigative actions
 
-### Configuration Variables
-The below configuration variables are required for this Connector to operate.  These variables are specified when configuring a Cisco Spark asset in SOAR.
+### Configuration variables
+This table lists the configuration variables required to operate Cisco Spark. These variables are specified when configuring a Cisco Spark asset in Splunk SOAR.
 
 VARIABLE | REQUIRED | TYPE | DESCRIPTION
 -------- | -------- | ---- | -----------
